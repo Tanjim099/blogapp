@@ -16,6 +16,11 @@ const blogSchema = mongoose.Schema({
     img: {
         type: String,
         required: true
+    },
+    author: {
+        type: mongoose.Types.ObjectId,
+        ref: "infoTimesUserData",
+        required: true
     }
 });
 
