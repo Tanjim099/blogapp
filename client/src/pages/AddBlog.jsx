@@ -41,7 +41,7 @@ function AddBlog() {
                 <input type="text" placeholder="Enter category" className="border border-b-black" value={blogData.category} onChange={(e) => { setBlogData({ ...blogData, category: e.target.value }) }} />
                 <input type="text" placeholder="Enter image url of your blog" className="border-4 border-b-black" value={blogData.img} onChange={(e) => { setBlogData({ ...blogData, img: e.target.value }) }} />
                 <textarea name="description" placeholder="Enter description of you blog" id="" className="border" value={blogData.description} onChange={(e) => { setBlogData({ ...blogData, description: e.target.value }) }}></textarea>
-                <textarea name="content" placeholder="Enter content of your blog" id="" cols="30" rows="10" className="border" value={blogData.content} onChange={(e) => { setBlogData({ ...blogData, content: e.target.value }) }}></textarea>
+                <textarea name="content" placeholder="Enter content of your blog" id="" cols="30" rows="10" className="border p-5" value={blogData.content} onChange={(e) => { setBlogData({ ...blogData, content: e.target.value }) }}></textarea>
                 <button onClick={submitData} className=" py-2 bg-green-600 rounded-md text-white">Create blog</button>
             </div>
         </HomeLayout>

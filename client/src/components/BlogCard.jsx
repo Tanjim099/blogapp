@@ -17,7 +17,6 @@ function BlogList({ data, userData }) {
 
     function onFilteredData(data) {
         const newData = blogData.filter((blog) => {
-            console.log(data.category)
             return blog.category === data.category
         })
         // console.log(newData)

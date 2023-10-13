@@ -12,6 +12,7 @@ import Login from './pages/Login'
 import Profile from './pages/User/Profile'
 import RequireAuth from './components/Auth/RequireAuth'
 import NewsCategoryPage from './pages/NewsCategoryPage'
+import CricketCategoryPage from './pages/CricketCategoryPage'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Route path='/login' element={<Login />} />
 
       <Route path='/category/news' element={<NewsCategoryPage />} />
+      <Route path='/category/cricket' element={<CricketCategoryPage />} />
       <Route element={<RequireAuth />}>
         <Route path='/addblog' element={<AddBlog />} />
         <Route path='/user/profile' element={<Profile />} />

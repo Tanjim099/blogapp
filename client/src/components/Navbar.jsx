@@ -21,7 +21,7 @@ function NavBar() {
                 <NavLink to="/category/news">
                     <button className="">News</button>
                 </NavLink>
-                <NavLink>
+                <NavLink to="/category/cricket">
                     <button>Cricket</button>
                 </NavLink>
                 <NavLink>
@@ -64,6 +64,7 @@ function NavBar() {
                                     </Link>
                                 </li>
                                 <li><a>Settings</a></li>
+                                <li><Link to="/addblog">Settings</Link></li>
                                 <li><a onClick={onLoguot}>Logout</a></li>
 
                             </ul>

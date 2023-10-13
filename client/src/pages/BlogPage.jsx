@@ -28,6 +28,7 @@ function BlogPage() {
     return (
         <HomeLayout>
             <div className="w-[80%] m-auto mt-10">
+
                 <MainBlogCard data={mainBlogCardData} />
                 <div className="mb-10 flex flex-wrap gap-4">
                     {
