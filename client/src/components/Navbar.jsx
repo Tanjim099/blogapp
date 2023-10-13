@@ -52,7 +52,6 @@ function NavBar() {
                                     </Link>
                                 </li>
                                 <li><Link to="/register">Register</Link></li>
-                                <li><a>Logout</a></li>
 
                             </ul>
                         ) : (

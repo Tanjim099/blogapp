@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProfile, loguot } from "../redux/slices/authSilce";
 import { useEffect } from "react";
 import NavBar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 function HomeLayout({ children }) {
     const dispatch = useDispatch();
@@ -79,6 +80,9 @@ function HomeLayout({ children }) {
                 {/* </div> */}
             </div>
             {children}
+            <div className="w-[80%] m-auto">
+                <Footer />
+            </div>
         </div>
     );
 }

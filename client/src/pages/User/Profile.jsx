@@ -1,15 +1,20 @@
 // import useDispatch from "react-redux";
 // import HomeLayout from "../layouts/HomeLayout";
 // import useEffect from "react";
-import getProfile from "../../redux/slices/authSilce";
+import getProfile, { loguot } from "../../redux/slices/authSilce";
 import HomeLayout from "../../layouts/HomeLayout";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 function Profile() {
+    const dispatch = useDispatch()
     const profileData = useSelector((state) => state.auth.data.userData);
-    console.log(profileData)
+    // console.log(profileData)
 
+
+    async function onLoguot() {
+        await dispatch(loguot())
+    }
     return (
         <HomeLayout>
             <div className="flex items-center justify-center">
@@ -23,7 +28,7 @@ function Profile() {
                         <p>Blogs: 4</p>
                         <button className="bg-green-500 text-white font-semibold py-1 rounded-lg">Edit</button>
                         <button className="bg-indigo-500 text-white font-semibold py-1 rounded-lg">Change Password</button>
-                        <button className="bg-red-500 text-white font-semibold py-1 rounded-lg">Logout</button>
+                        <button onClick={onLoguot} className="bg-red-500 text-white font-semibold py-1 rounded-lg">Logout</button>
                     </div>
                 </div>
             </div>

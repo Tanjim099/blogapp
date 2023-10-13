@@ -38,7 +38,7 @@ function Register() {
     }
     return (
         <HomeLayout>
-            <div className=" mt-[10%]">
+            <div className=" my-[5%]">
                 <form
                     onSubmit={onFormSubmit}
                     oValidate
@@ -85,7 +85,7 @@ function Register() {
                             placeholder="password.."
                             className="bg-transparent px-3 py-1 border outline-none" />
                     </div>
-                    <button type="submit" className=" bg-green-500 py-2">Register</button>
+                    <button type="submit" className=" bg-[#003366] text-white py-2">Register</button>
                 </form>
             </div>
         </HomeLayout>
