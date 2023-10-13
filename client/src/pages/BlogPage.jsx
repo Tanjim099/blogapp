@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { getAllBlog } from "../redux/slices/blogSlice";
 import BlogList from "../components/BlogCard";
@@ -8,11 +8,13 @@ import MainBlogCard from "../components/MainBlogCard";
 
 function BlogPage() {
     const dispatch = useDispatch();
-    const blogData = useSelector((state) => state?.blog?.blogList?.getAllBlog)
+    const blogData = useSelector((state) => state?.blog?.blogList)
     const userData = useSelector((state) => state?.auth?.data?.userData)
     // console.log(blogData)
 
-    const slicedBlogData = blogData?.slice(5, blogData.length);
+    const mainBlogCardData = blogData.slice(0, 5)
+
+    const slicedBlogData = blogData?.slice(5, blogData.length)
     async function loadBlog() {
         await dispatch(getAllBlog())
         await dispatch(getProfile())
@@ -26,8 +28,8 @@ function BlogPage() {
     return (
         <HomeLayout>
             <div className="w-[80%] m-auto mt-10">
-                <MainBlogCard />
-                <div className="mb-10 flex flex-wrap gap-5">
+                <MainBlogCard data={mainBlogCardData} />
+                <div className="mb-10 flex flex-wrap gap-4">
                     {
                         slicedBlogData?.map((e) => {
                             return <BlogList key={e._id} data={e} />

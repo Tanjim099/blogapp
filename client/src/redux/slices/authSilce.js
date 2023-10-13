@@ -1,5 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import axiosInstance from "../../config/axiosInstance"
+import toast from "react-hot-toast";
+// import 'react-toastify/dist/ReactToastify.css';
 
 const initialState = {
     isLoggedIn: localStorage.getItem("isLoggedIn") || false,
@@ -13,6 +15,7 @@ export const createAccount = createAsyncThunk("/auth/register", async (data) => 
         const response = axiosInstance.post("user/register", data)
         return (await response).data;
     } catch (error) {
+        // toast.error(error?.response?.data?.message)
         console.log(error?.response?.data?.message);
     }
 })
@@ -63,7 +66,9 @@ export const getBlogs = createAsyncThunk("user/blogs", async (userId) => {
         const response = axiosInstance.get(`user/:${userId}/blogs`);
         return (await response).data
     } catch (error) {
-        console.log(error?.response?.data?.message);
+        // alert(error?.response?.data?.message)
+        // console.log(error?.response?.data?.message);
+        toast.error(error?.response?.data?.message)
     }
 })
 const authSlice = createSlice({

@@ -2,6 +2,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { getProfile, loguot } from "../redux/slices/authSilce";
 import { useEffect } from "react";
+import NavBar from "../components/Navbar";
 
 function HomeLayout({ children }) {
     const dispatch = useDispatch();
@@ -33,12 +34,14 @@ function HomeLayout({ children }) {
     const userDetails = dispatch(getProfile())
     useEffect(() => {
         userDetails
-        console.log(userDetails)
     }, [])
     return (
         <div>
-            <div className="bg-green-500 h-10 w-[80%] m-auto flex items-center justify-between px-5">
-                <div>
+            {/* <NavBar /> */}
+            {/* <div className="bg-green-500 h-10 w-[80%] m-auto flex items-center justify-between px-5"> */}
+            <div className="w-[80%] m-auto sticky top-0 z-10">
+                <NavBar />
+                {/* <div>
                     <Link to="/">LOGO</Link>
                 </div>
                 <div className="flex gap-10">
@@ -72,7 +75,8 @@ function HomeLayout({ children }) {
                             </button>
                         </div>
                     )}
-                </div>
+                </div> */}
+                {/* </div> */}
             </div>
             {children}
         </div>

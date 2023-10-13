@@ -3,6 +3,7 @@ import HomeLayout from "../layouts/HomeLayout";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { createAccount } from "../redux/slices/authSilce";
+import toast from "react-hot-toast";
 
 function Register() {
     const dispatch = useDispatch()
@@ -25,21 +26,27 @@ function Register() {
     async function onFormSubmit(e) {
         e.preventDefault()
         if (!registerDetails.name || !registerDetails.email || !registerDetails.password) {
-            alert("All field are required");
+            toast.error("All field are required");
             return
         }
         const response = await dispatch(createAccount(registerDetails))
+
+        if (response?.payload?.data) {
+            navigate("/login")
+        }
         console.log(response)
     }
     return (
         <HomeLayout>
-            <div className="h-[88vh]">
+            <div className=" mt-[10%]">
                 <form
                     onSubmit={onFormSubmit}
                     oValidate
                     className="flex flex-col border w-1/4 m-auto justify-center gap-3 rounded-lg p-4 ">
-                    <h1>Register Form</h1>
+                    <h1 className=" text-center text-2xl font-semibold">Register Form</h1>
                     <div className="flex flex-col gap-1">
+                        <label htmlFor="">Profile</label>
+
                         <label htmlFor="name" className="font-semibold">
                             Name
                         </label>
@@ -49,6 +56,7 @@ function Register() {
                             type="text"
                             name="name"
                             id="name"
+                            placeholder="username..."
                             className="bg-transparent px-3 py-1 border outline-none" />
                     </div>
                     <div className="flex flex-col gap-1">
@@ -61,6 +69,7 @@ function Register() {
                             type="email"
                             name="email"
                             id="email"
+                            placeholder="email..."
                             className="bg-transparent px-3 py-1 border outline-none" />
                     </div>
                     <div className="flex flex-col gap-1">
@@ -73,9 +82,10 @@ function Register() {
                             type="password"
                             name="password"
                             id="password"
+                            placeholder="password.."
                             className="bg-transparent px-3 py-1 border outline-none" />
                     </div>
-                    <button type="submit" className=" bg-green-500">Register</button>
+                    <button type="submit" className=" bg-green-500 py-2">Register</button>
                 </form>
             </div>
         </HomeLayout>

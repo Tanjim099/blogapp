@@ -11,16 +11,18 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Profile from './pages/User/Profile'
 import RequireAuth from './components/Auth/RequireAuth'
+import NewsCategoryPage from './pages/NewsCategoryPage'
 
 function App() {
   return (
     <Routes>
       <Route path='/' element={<BlogPage />} />
-      <Route path='/blog/read' element={<ReadBlog />} />
+      <Route path='/blog/:_id' element={<ReadBlog />} />
 
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
 
+      <Route path='/category/news' element={<NewsCategoryPage />} />
       <Route element={<RequireAuth />}>
         <Route path='/addblog' element={<AddBlog />} />
         <Route path='/user/profile' element={<Profile />} />

@@ -7,7 +7,6 @@ const initialState = {
 
 export const getAllBlog = createAsyncThunk("/blog/getAllBlog", async () => {
     const response = await axiosInstance.get("/blog");
-    console.log(response.data)
     return response.data
 })
 
@@ -28,9 +27,7 @@ const blogSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getAllBlog.fulfilled, (state, action) => {
-            state.blogList = action.payload
-
-            // console.log(state.blogList.getAllBlog)
+            state.blogList = action.payload.getAllBlog.reverse()
         })
     }
 })
