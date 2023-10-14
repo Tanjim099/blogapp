@@ -14,7 +14,16 @@ function BlogPage() {
 
     const mainBlogCardData = blogData.slice(0, 5)
 
-    const slicedBlogData = blogData?.slice(5, blogData.length)
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 8; // Adjust this value as needed
+    const indexOfLastItem = currentPage * itemsPerPage + 5;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    // const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+
+
+    const numPages = Math.ceil(blogData.length / itemsPerPage);
+
+    const slicedBlogData = blogData?.slice(indexOfFirstItem, indexOfLastItem)
     async function loadBlog() {
         await dispatch(getAllBlog())
         await dispatch(getProfile())
@@ -30,12 +39,21 @@ function BlogPage() {
             <div className="w-[80%] m-auto mt-10">
 
                 <MainBlogCard data={mainBlogCardData} />
-                <div className="mb-10 flex flex-wrap gap-4">
+                <div className="mb-8 flex flex-wrap gap-4">
                     {
                         slicedBlogData?.map((e) => {
                             return <BlogList key={e._id} data={e} />
                         })
                     }
+                </div>
+                <div className=" w-[100%] m-auto flex items-center justify-center gap-7 mb-5">
+                    <button className=" bg-[#003366] text-white px-2 py-1 rounded-md" onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
+                        Previous
+                    </button>
+                    <p>{currentPage}</p>
+                    <button className=" bg-[#003366] text-white px-2 py-1 rounded-md" onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === numPages}>
+                        Next
+                    </button>
                 </div>
             </div>
         </HomeLayout>
