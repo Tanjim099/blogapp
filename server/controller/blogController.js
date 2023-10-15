@@ -38,14 +38,15 @@ const getSingleBlog = async (req, res) => {
 
 const createBlog = async (req, res) => {
     try {
-        const { title, description, content, img, userId } = req.body;
-        if (!title || !description || !content) {
+        const { title, category, description, content, img, userId } = req.body;
+        if (!title || !category || !description || !content) {
             return res.status(300).send({
                 message: "All fields are required"
             })
         }
         const newBlog = await blogModel({
             title,
+            category,
             description,
             content,
             img,
@@ -65,4 +66,36 @@ const createBlog = async (req, res) => {
     }
 }
 
-module.exports = { getBLog, getSingleBlog, createBlog }
+
+const deleteBlog = async (req, res) => {
+    try {
+        const { blogId } = req.params;
+
+        if (!blogId) {
+            res.status(404).json({
+                message: "Id is does not exist"
+            })
+        }
+        const blog = await blogModel.findByIdAndDelete(blogId);
+
+        if (!blog) {
+            res.status(404).json({
+                message: "Blog with given is does not exist"
+            })
+        }
+
+        res.status(200).send({
+            status: true,
+            message: "Blog Delete successfully"
+        })
+    } catch (error) {
+        res.status(404).send({
+            status: false,
+            message: error
+        })
+    }
+
+}
+
+
+module.exports = { getBLog, getSingleBlog, createBlog, deleteBlog }

@@ -1,5 +1,7 @@
 const { userModel } = require("../models/userModel");
 const bcrypt = require("bcrypt");
+const fs = require('fs/promises');
+// const cloudinary = require('cloudinary')
 const jwt = require("jsonwebtoken");
 const AppError = require("../utils/appError");
 const { blogModel } = require("../models/blogModel");
@@ -27,7 +29,35 @@ const register = async (req, res, next) => {
             return next(new AppError("Email already exists", 400))
         }
         const hashedPassword = await bcrypt.hash(password, 12) // hash password
-        const newUser = await userModel.create({ ...req.body, password: hashedPassword })
+        // const newUser = await userModel.create({ ...req.body, password: hashedPassword })
+        const newUser = await userModel.create({
+            name,
+            email,
+            password: hashedPassword,
+            // avatar:{
+            //     public_id: email,
+            //     secure_url:'https://res.cloudinary.com/du9jzqlpt/image/upload/v1674647316/avatar_drzgxv.jpg'
+            // }
+        })
+        // if(req.file){
+        //     await cloudinary.v2.uploader.destory(newUser.avatar.public_id);
+
+        //     const result = await cloudinary.v2.uploader.upload(req.file.path, {
+        //         folder: "blog",
+        //         width: 250,
+        //         heigth: 250,
+        //         gravity: 'faces',
+        //         crop: 'fill'
+        //     });
+
+        //     if(result){
+        //         newUser.avatar.public_id = result.public_id,
+        //         newUser.avatar.secure_url = result.secure_url;
+
+        //         // remove file from local server
+        //         fs.rm(`uploads/${req.file.filename}`)
+        //     }
+        // }
         await newUser.save();
 
         const token = await newUser.generateJWTToken();
@@ -112,7 +142,7 @@ const getUserDetails = async (req, res) => {
     //     })
     // }
 
-    const user = await userModel.findById(req.user.id).populate('blog')
+    const user = await userModel.findById(req.user.id)
     // .populate('blog')
 
 
