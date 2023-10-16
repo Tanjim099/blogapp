@@ -21,6 +21,16 @@ export const createBlog = createAsyncThunk("/blog/create", async (data) => {
     }
 })
 
+export const deleteBlog = createAsyncThunk("/blog/delete", async (blogId) => {
+    try {
+        const response = axiosInstance.delete(`/blog/delete/${blogId}`);
+        console.log(response.data)
+        return (await response).data
+    } catch (error) {
+        console.log(error.message)
+    }
+})
+
 const blogSlice = createSlice({
     name: "blog",
     initialState,

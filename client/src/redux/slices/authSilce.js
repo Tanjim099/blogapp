@@ -62,8 +62,9 @@ export const getProfile = createAsyncThunk("user/details", async () => {
 })
 
 export const getBlogs = createAsyncThunk("user/blogs", async (userId) => {
+    console.log(userId)
     try {
-        const response = axiosInstance.get(`user/:${userId}/blogs`);
+        const response = axiosInstance.get(`user/${userId}/blogs`);
         return (await response).data
     } catch (error) {
         // alert(error?.response?.data?.message)
@@ -103,7 +104,8 @@ const authSlice = createSlice({
 
             })
             .addCase(getBlogs.fulfilled, (state, action) => {
-                console.log(action)
+                state.blogs = action?.payload?.blogs
+                console.log(state.blogs)
             })
     }
 })

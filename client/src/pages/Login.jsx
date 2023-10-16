@@ -29,13 +29,10 @@ function Login() {
         }
 
         const response = await dispatch(login(loginDetails))
-        console.log(response)
-        console.log(response?.payload?.data)
         if (response?.payload?.data) {
             const userDetails = dispatch(getProfile())
             navigate("/")
         }
-        console.log(response)
     }
     return (
         <HomeLayout>

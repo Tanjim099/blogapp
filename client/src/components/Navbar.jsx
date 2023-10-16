@@ -18,6 +18,9 @@ function NavBar() {
                 <Link to="/" className="btn btn-ghost normal-case text-4xl text-white">NEWSTIMES</Link>
             </div>
             <div className="text-white flex items-center justify-between gap-4">
+                <NavLink to="/">
+                    <button className="">Home</button>
+                </NavLink>
                 <NavLink to="/category/news">
                     <button className="">News</button>
                 </NavLink>
@@ -63,8 +66,8 @@ function NavBar() {
                                         <span className="badge">New</span>
                                     </Link>
                                 </li>
-                                <li><a>Settings</a></li>
-                                <li><Link to="/addblog">Settings</Link></li>
+                                <li><Link to="/addblog">Add Blog</Link></li>
+                                <li><Link to="/user/dashboard">Dashboard</Link></li>
                                 <li><a onClick={onLoguot}>Logout</a></li>
 
                             </ul>

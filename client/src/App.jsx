@@ -13,6 +13,7 @@ import Profile from './pages/User/Profile'
 import RequireAuth from './components/Auth/RequireAuth'
 import NewsCategoryPage from './pages/NewsCategoryPage'
 import CricketCategoryPage from './pages/CricketCategoryPage'
+import Dashboard from './pages/User/Dashboard'
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Route element={<RequireAuth />}>
         <Route path='/addblog' element={<AddBlog />} />
         <Route path='/user/profile' element={<Profile />} />
+        <Route path='/user/dashboard' element={<Dashboard />} />
       </Route>
     </Routes>
   )

@@ -5,11 +5,15 @@ import getProfile, { loguot } from "../../redux/slices/authSilce";
 import HomeLayout from "../../layouts/HomeLayout";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Profile() {
     const dispatch = useDispatch()
     const profileData = useSelector((state) => state.auth.data.userData);
     // console.log(profileData)
+
+    const allBlogs = useSelector((state) => state?.auth?.blogs);
+    const numbersOfBlogs = allBlogs.length;
 
 
     async function onLoguot() {
@@ -25,7 +29,7 @@ function Profile() {
                         <hr />
                         <p>Email : {profileData?.email}</p>
                         <hr />
-                        <p>Blogs: 4</p>
+                        <Link to="/user/allblogs">Blogs: {numbersOfBlogs}</Link>
                         <button className="bg-green-500 text-white font-semibold py-1 rounded-lg">Edit</button>
                         <button className="bg-indigo-500 text-white font-semibold py-1 rounded-lg">Change Password</button>
                         <button onClick={onLoguot} className="bg-red-500 text-white font-semibold py-1 rounded-lg">Logout</button>

@@ -36,7 +36,7 @@ function BlogList({ data, userData }) {
     return (
         <div
             onClick={() => onCallFunction(data)}
-            className="w-[290px] h-[330px]  p-2 flex flex-col shadow-[0_0_2px_black] rounded-md">
+            className="w-[290px] h-[330px]  p-2 flex flex-col shadow-[0_0_2px_black] rounded-md cursor-pointer">
             <img src={data.img} alt="" className="W-full h-[200px] rounded-md" />
             <h1 className=" text-lg font-bold">{data?.title}</h1>
             {/* <p>By {data.author.name}</p>
