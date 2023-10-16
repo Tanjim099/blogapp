@@ -37,6 +37,7 @@ const blogSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getAllBlog.fulfilled, (state, action) => {
+            console.log(action)
             state.blogList = action.payload.getAllBlog.reverse()
         })
     }

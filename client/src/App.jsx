@@ -14,6 +14,7 @@ import RequireAuth from './components/Auth/RequireAuth'
 import NewsCategoryPage from './pages/NewsCategoryPage'
 import CricketCategoryPage from './pages/CricketCategoryPage'
 import Dashboard from './pages/User/Dashboard'
+import AdminDashboard from './pages/User/AdminDashboard'
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path='/addblog' element={<AddBlog />} />
         <Route path='/user/profile' element={<Profile />} />
         <Route path='/user/dashboard' element={<Dashboard />} />
+        <Route path='/admin/dashboard' element={<AdminDashboard />} />
       </Route>
     </Routes>
   )

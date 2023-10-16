@@ -10,7 +10,7 @@ function BlogPage() {
     const dispatch = useDispatch();
     const blogData = useSelector((state) => state?.blog?.blogList)
     const userData = useSelector((state) => state?.auth?.data?.userData)
-    // console.log(blogData)
+    console.log(blogData)
 
     const mainBlogCardData = blogData.slice(0, 5)
 
