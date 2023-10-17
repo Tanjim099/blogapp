@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser')
 const { userRoute } = require("./routes/userRoute");
 const errorMiddleware = require("./middlewares.js/error.middleware");
 const morgan = require("morgan");
+const { miscRoutes } = require("./routes/miscellaneousRoute");
 require("dotenv").config()
 const app = express();
 
@@ -31,10 +32,15 @@ app.get("/", (req, res) => {
     })
 })
 
+
+// blog route
 app.use("/api/v1/blog", blogRoute);
 
 // user route
 app.use("/api/v1/user", userRoute);
+
+// admin route
+app.use("/api/v1/admin", miscRoutes)
 
 // database connect
 connectDB();

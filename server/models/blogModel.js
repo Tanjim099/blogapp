@@ -25,7 +25,13 @@ const blogSchema = mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: "infoTimesUserData",
         required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now()
     }
+}, {
+    timestamps: true
 });
 
 const blogModel = mongoose.model("InfoTimes", blogSchema);
