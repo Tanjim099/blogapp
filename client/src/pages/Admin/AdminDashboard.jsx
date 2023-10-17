@@ -71,10 +71,10 @@ function AdminDashboard() {
         <div>
             <AdminLayout>
                 <div className="w-[100%] flex flex-col gap-5 px-10 py-2">
-                    <div className=" ">
+                    <div className="">
                         <AdminNavbar />
                     </div>
-                    <div className="">
+                    <div className="flex flex-col gap-10">
                         <div className="flex justify-evenly w-[100%] gap-10">
                             <div className="w-[33%] h-[150px] bg-[#0363e8] flex flex-col items-center text-center justify-center gap-1 text-white rounded-md">
                                 <h3 className="text-2xl font-semibold">Total Users</h3>

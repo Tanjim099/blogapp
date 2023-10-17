@@ -22,7 +22,11 @@ function Dashboard() {
     async function onDeleteBlog(id) {
         if (window.confirm("Are you sure you want to delete the blog ?")) {
             const response = await dispatch(deleteBlog(id));
-            console.log(id)
+            if (response?.payload?.status == true) {
+                onGetAllBlogs();
+                alert("Blog deleted successfully")
+            }
+            console.log(response)
         }
     }
     const allBlogs = useSelector((state) => state?.auth?.blogs);
@@ -31,7 +35,6 @@ function Dashboard() {
     console.log(flag)
     useEffect(() => {
         onGetAllBlogs()
-        onDeleteBlog
         // (
         //     async () => {
         //         onGetAllBlogs
