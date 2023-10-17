@@ -14,7 +14,11 @@ import RequireAuth from './components/Auth/RequireAuth'
 import NewsCategoryPage from './pages/NewsCategoryPage'
 import CricketCategoryPage from './pages/CricketCategoryPage'
 import Dashboard from './pages/User/Dashboard'
-import AdminDashboard from './pages/User/AdminDashboard'
+import AdminDashboard from './pages/Admin/AdminDashboard'
+import AdminDashboardPage from './pages/Admin/AdminPostsPage'
+import AdminPostsPage from './pages/Admin/AdminPostsPage'
+import AdminLayout from './layouts/AdminLayout'
+import AdminUsersPage from './pages/Admin/AdminUsersPage'
 
 function App() {
   return (
@@ -32,6 +36,8 @@ function App() {
         <Route path='/user/profile' element={<Profile />} />
         <Route path='/user/dashboard' element={<Dashboard />} />
         <Route path='/admin/dashboard' element={<AdminDashboard />} />
+        <Route path='/admin/posts' element={<AdminPostsPage />} />
+        <Route path='/admin/users' element={<AdminUsersPage />} />
       </Route>
     </Routes>
   )
