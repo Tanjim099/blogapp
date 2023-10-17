@@ -3,12 +3,22 @@ import axiosInstance from "../../config/axiosInstance";
 
 const initialState = {
     allUsersCount: 0,
-    allBlogsCount: 0
+    allBlogsCount: 0,
+    allUsers: []
 };
 
 export const getStatsData = createAsyncThunk("stats/get", async () => {
     try {
         const response = axiosInstance.get("/admin/stats/users");
+        return (await response).data
+    } catch (error) {
+        alert(error.message)
+    }
+});
+
+export const getAllRegisteredUsers = createAsyncThunk("/stats/getallusers", async () => {
+    try {
+        const response = axiosInstance.get("/admin/stats/allusers");
         return (await response).data
     } catch (error) {
         alert(error.message)
@@ -24,6 +34,10 @@ const statSlice = createSlice({
             state.allUsersCount = action?.payload?.allUsersCount;
             state.allBlogsCount = action?.payload?.allBlogsCount
         })
+            .addCase(getAllRegisteredUsers.fulfilled, (state, action) => {
+                state.allUsers = action?.payload?.allUsers.reverse()
+                console.log(action)
+            })
     }
 })
 
