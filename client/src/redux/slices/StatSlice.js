@@ -25,6 +25,15 @@ export const getAllRegisteredUsers = createAsyncThunk("/stats/getallusers", asyn
     }
 })
 
+export const deleteUSer = createAsyncThunk("/stats/deleteuser", async (userId) => {
+    try {
+        const response = axiosInstance.delete(`/admin/stats/user/delete/${userId}`);
+        return (await response).data
+    } catch (error) {
+        alert(error.message)
+    }
+})
+
 const statSlice = createSlice({
     name: "state",
     initialState,

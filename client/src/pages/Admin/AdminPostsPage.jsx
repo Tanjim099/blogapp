@@ -67,9 +67,10 @@ function AdminPostsPage() {
 
                         {
                             slicedBlogPostData?.map((blog, i) => {
+                                const monthArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
                                 const date = new Date(blog.updatedAt)
                                 const day = date.getDate();
-                                const month = date.getMonth();
+                                const month = monthArr[date.getMonth()];
                                 const fullYear = date.getFullYear();
                                 const year = fullYear.toString().slice(-2)
                                 console.log(day)
