@@ -14,7 +14,7 @@ const Sidebar = () => {
                 <Link to="/admin/posts" className="block p-2 transition duration-300 hover:bg-blue-800 rounded">
                     Posts
                 </Link>
-                <Link to="/admin/users" className="block p-2 transition duration-300 hover:bg-blue-800 rounded before::content-[\f109]">
+                <Link to="/admin/users" className="block p-2 transition duration-300 hover:bg-blue-800 rounded">
                     Users
                 </Link>
             </nav>

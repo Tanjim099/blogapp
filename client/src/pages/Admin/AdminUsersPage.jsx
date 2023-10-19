@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import AdminLayout from "../../layouts/AdminLayout";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { deleteUSer, getAllRegisteredUsers } from "../../redux/slices/StatSlice";
 import AdminNavbar from "../../components/Admin/AdminNavbar";
 
@@ -8,8 +8,23 @@ function AdminUsersPage() {
     const dispatch = useDispatch();
     const allUsers = useSelector((state) => state?.stat?.allUsers);
 
-    async function onDeleteUser(userId) {
-        const response = await dispatch(deleteUSer(userId))
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 11;
+    const indexOfLastItem = itemsPerPage * currentPage;
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+    const numPages = Math.ceil(allUsers.length / itemsPerPage)
+
+    const sliceAllUsers = allUsers.slice(indexOfFirstItem, indexOfLastItem)
+
+    async function onDeleteUser(userId, name) {
+        if (window.confirm(`Are you sure you want to delete ${name} author account`)) {
+            const response = await dispatch(deleteUSer(userId))
+            console.log(response)
+            if (response?.payload?.success == true) {
+                alert(`${name} deleted successful`)
+                await dispatch(getAllRegisteredUsers())
+            }
+        }
     }
     useEffect(() => {
         (
@@ -20,7 +35,7 @@ function AdminUsersPage() {
     }, [])
     return (
         <AdminLayout>
-            <div className="flex flex-col px-10 py-2 gap-4 w-[100%]">
+            <div className="flex flex-col px-10 py-2 gap-2 w-[100%]">
                 <div>
                     <AdminNavbar />
                 </div>
@@ -37,7 +52,7 @@ function AdminUsersPage() {
                     </thead>
                     <tbody>
                         {
-                            allUsers.map((user, i) => {
+                            sliceAllUsers.map((user, i) => {
                                 const date = new Date(user.createdAt);
                                 const day = date.getDate()
                                 const monthArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -53,7 +68,7 @@ function AdminUsersPage() {
                                         <td>{user._id}</td>
                                         <td>{day} - {month} - {year}</td>
                                         <td>
-                                            <button onClick={() => onDeleteUser(user._id)} className="bg-red-500 text-white px-3 text-lg rounded-md"><i class="fa fa-trash-o"></i></button>
+                                            <button onClick={() => onDeleteUser(user._id, user.name)} className="bg-red-500 text-white px-3 text-lg rounded-md"><i class="fa fa-trash-o"></i></button>
                                         </td>
                                     </tr>
                                 )
@@ -61,6 +76,15 @@ function AdminUsersPage() {
                         }
                     </tbody>
                 </table>
+                <div className=" w-[100%] m-auto flex items-center justify-center gap-7 mb-5">
+                    <button className=" bg-[#003366] text-white px-2 py-1 rounded-md" onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
+                        Previous
+                    </button>
+                    <p>{currentPage}</p>
+                    <button className=" bg-[#003366] text-white px-2 py-1 rounded-md" onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === numPages}>
+                        Next
+                    </button>
+                </div>
             </div>
         </AdminLayout>
     )

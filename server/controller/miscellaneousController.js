@@ -49,4 +49,27 @@ const deleteUser = async (req, res) => {
     }
 }
 
-module.exports = { userStats, getAllUsers, deleteUser }
+const getMonthlyPost = async (req, res) => {
+    try {
+        const { year, month } = req.query;
+
+        const startDate = new Date(year, month - 1, 1);
+        const endDate = new Date(year, month, 0);
+
+        const monthlyBlogPosts = await blogModel.find({
+            date: { $gte: startDate, $lte: endDate },
+        });
+
+        res.status(200).send({
+            success: true,
+            message: "monthlyBlogPosts getted successful",
+            monthlyBlogPosts
+        })
+    } catch (error) {
+        res.status(500).send({
+            error: error.message
+        })
+    }
+}
+
+module.exports = { userStats, getAllUsers, deleteUser, getMonthlyPost }
