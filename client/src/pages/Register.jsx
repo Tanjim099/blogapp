@@ -38,14 +38,13 @@ function Register() {
     }
     return (
         <HomeLayout>
-            <div className=" my-[5%]">
+            <div className=" min-h-[58vh] flex">
                 <form
                     onSubmit={onFormSubmit}
                     oValidate
-                    className="flex flex-col border w-1/4 m-auto justify-center gap-3 rounded-lg p-4 ">
-                    <h1 className=" text-center text-2xl font-semibold">Register Form</h1>
+                    className="w-[90%] flex flex-col border sm:w-1/4 m-auto justify-center gap-3 rounded-lg p-6 ">
+                    <h1 className="text-center text-3xl font-semibold">Register Form</h1>
                     <div className="flex flex-col gap-1">
-                        <label htmlFor="">Profile</label>
 
                         <label htmlFor="name" className="font-semibold">
                             Name
@@ -56,8 +55,8 @@ function Register() {
                             type="text"
                             name="name"
                             id="name"
-                            placeholder="username..."
-                            className="bg-transparent px-3 py-1 border outline-none" />
+                            placeholder="enter username..."
+                            className="bg-transparent px-3 py-2 border outline-none rounded-md" />
                     </div>
                     <div className="flex flex-col gap-1">
                         <label htmlFor="email" className="font-semibold">
@@ -69,8 +68,8 @@ function Register() {
                             type="email"
                             name="email"
                             id="email"
-                            placeholder="email..."
-                            className="bg-transparent px-3 py-1 border outline-none" />
+                            placeholder="enter email..."
+                            className="bg-transparent px-3 py-2 border outline-none rounded-md" />
                     </div>
                     <div className="flex flex-col gap-1">
                         <label htmlFor="password" className="font-semibold">
@@ -82,10 +81,10 @@ function Register() {
                             type="password"
                             name="password"
                             id="password"
-                            placeholder="password.."
-                            className="bg-transparent px-3 py-1 border outline-none" />
+                            placeholder="enter password..."
+                            className="bg-transparent px-3 py-2 border outline-none rounded-md" />
                     </div>
-                    <button type="submit" className=" bg-[#003366] text-white py-2">Register</button>
+                    <button type="submit" className=" bg-[#003366] mt-5 p-2 text-white rounded-md">Register</button>
                 </form>
             </div>
         </HomeLayout>

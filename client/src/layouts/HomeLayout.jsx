@@ -2,8 +2,11 @@ import { Link, NavLink, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { getProfile, loguot } from "../redux/slices/authSilce";
 import { useEffect } from "react";
-import NavBar from "../components/Navbar";
+import NavBar from "../components/Navbar3";
 import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+import Navbar2 from "../components/Navbar";
+import NavBar3 from "../components/Navbar3";
 
 function HomeLayout({ children }) {
     const dispatch = useDispatch();
@@ -40,8 +43,9 @@ function HomeLayout({ children }) {
         <div>
             {/* <NavBar /> */}
             {/* <div className="bg-green-500 h-10 w-[80%] m-auto flex items-center justify-between px-5"> */}
-            <div className="w-[80%] m-auto sticky top-0 z-10">
-                <NavBar />
+            <div className="sm:w-[80%] w-[100%] m-auto sticky top-0 z-10">
+                <Navbar />
+                {/* <NavBar3 /> */}
                 {/* <div>
                     <Link to="/">LOGO</Link>
                 </div>
@@ -80,7 +84,7 @@ function HomeLayout({ children }) {
                 {/* </div> */}
             </div>
             {children}
-            <div className="w-[80%] m-auto">
+            <div className="sm:w-[80%] m-auto w-[100%]">
                 <Footer />
             </div>
         </div>

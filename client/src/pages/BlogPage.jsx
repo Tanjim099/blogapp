@@ -36,10 +36,10 @@ function BlogPage() {
     }, []);
     return (
         <HomeLayout>
-            <div className="w-[80%] m-auto mt-10">
+            <div className="w-[100%] m-auto mt-10 sm:w-[80%]">
 
                 <MainBlogCard data={mainBlogCardData} />
-                <div className="mb-8 flex flex-wrap gap-4">
+                <div className="mb-8 px-3 sm:p-0 md:p-0 flex flex-wrap gap-4">
                     {
                         slicedBlogData?.map((e) => {
                             return <BlogList key={e._id} data={e} />
