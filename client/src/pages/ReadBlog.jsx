@@ -34,8 +34,8 @@ function ReadBlog() {
             <div className="sm:w-[80%] w-full p-4 sm:p-0 md:p-0 m-auto mt-10">
                 <div className="flex flex-col gap-2">
                     <h1 className=" sm:text-3xl text-2xl font-semibold">{state?.title}</h1>
-                    <div className="flex">
-                        <div className="bg-red-600 w-[70%]">
+                    <div className="flex gap-6">
+                        <div className=" w-[70%] flex flex-col gap-3">
                             <div className="flex items-center gap-2">
                                 <div className="flex items-center gap-2">
                                     <img className="w-[30px] cursor-pointer" src="https://static-00.iconduck.com/assets.00/profile-circle-icon-1023x1024-ucnnjrj1.png" alt="" />
@@ -47,13 +47,18 @@ function ReadBlog() {
                             <img src={state?.img} alt="" className="w-full h-120 rounded-md" />
                             <p className="">{state?.content}</p>
                         </div>
-                        <div className="bg-green-600 w-[30%]">
-                            <div>
+                        <div className=" w-[30%] mt-8">
+                            <div className=" flex flex-col gap-6 ">
                                 {categoryBasedData?.map((data, i) => {
                                     return (
-                                        <div key={i} onClick={() => navigate(`/blog/${data?._id}`, { state: { ...data } })}>
-                                            <h3>{data.title}</h3>
-                                            <img src={data.img} alt="" />
+                                        <div
+                                            key={i}
+                                            onClick={() => navigate(`/blog/${data?._id}`, { state: { ...data } })}
+                                            className="h-[120px] flex gap-2 shadow-[0_0_1px_black] rounded-sm p-2 cursor-pointer "
+                                        >
+
+                                            <img src={data.img} alt="" className="w-[120px] rounded-sm" />
+                                            <h3 className=" font-bold overflow-hidden">{data.title}</h3>
                                         </div>
                                     )
                                 })}
