@@ -36,14 +36,27 @@ function BlogList({ data, userData }) {
     return (
         <div
             onClick={() => onCallFunction(data)}
-            className="sm:w-[290px] md:w-[288px] h-[330px]  p-2 flex flex-col shadow-[0_0_2px_black] rounded-md cursor-pointer">
+            className="sm:w-[290px] md:w-[288px] h-[330px] relative p-2 flex flex-col shadow-[0_0_2px_black] rounded-md cursor-pointer ">
             <img src={data.img} alt="" className="W-full h-[200px] rounded-md" />
-            <h1 className=" text-lg font-bold">{data?.title}</h1>
-            {/* <p>By {data.author.name}</p>
-            <p>Category : {data.category}</p> */}
-            {/* <p>{data?.description}</p> */}
+            <h1 className=" text-lg font-medium leading-5 ">{data?.title}</h1>
+            <div className="card-actions justify-between relative top-1">
+                <div className="badge badge-outline">{data?.author?.name}</div>
+                <div className="badge badge-outline">{data?.category}</div>
+            </div>
 
         </div>
+        // <div className="card w-[290px] h-[330px] rounded-md bg-base-100 shadow-xl">
+        //     <figure><img src={data.img} alt="Shoes" /></figure>
+        //     <div className="card-body">
+        //         <h2 className="card-title">
+        //             {data?.title}
+        //         </h2>
+        //         <div className="card-actions justify-between">
+        //             <div className="badge badge-outline">{data?.author?.name}</div>
+        //             <div className="badge badge-outline">{data?.category}</div>
+        //         </div>
+        //     </div>
+        // </div>
     )
 }
 export default BlogList

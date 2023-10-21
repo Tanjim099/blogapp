@@ -2,11 +2,8 @@ import { Link, NavLink, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { getProfile, loguot } from "../redux/slices/authSilce";
 import { useEffect } from "react";
-import NavBar from "../components/Navbar3";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import Navbar2 from "../components/Navbar";
-import NavBar3 from "../components/Navbar3";
 
 function HomeLayout({ children }) {
     const dispatch = useDispatch();
